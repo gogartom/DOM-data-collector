@@ -6,3 +6,4 @@ Crawler/*.out
 Renderer/data
 Renderer/*_images
 Renderer/phantomjs
+Renderer/bin
