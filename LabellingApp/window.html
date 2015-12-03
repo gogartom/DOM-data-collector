@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- ######### TOP ROW ########## -->
+
+    <div class="row" style="height:10%;">
+         <div class="col-md-12">
+         <div class="panel panel-default">
+            <div class="panel-body" style="height:100%;">
+                <button type="button" id="load_bt" class="btn btn-primary btn-lg">
+                    Load <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
+                </button>
+
+                <button type="button" id="save_bt" class="btn btn-primary btn-lg">
+                    Save <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+                </button>
+
+                <button type="button" id="next_bt" class="btn btn-primary btn-lg">
+                    Next <span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
+                </button>
+                
+            </div>
+         </div>    
+         <p id="texts"></p>
+         </div>
+    </div>
+
+    <!-- ######### CENTER ROW ########## -->
+
+    <div class="row" style="height:90%;">
+        <!-- ######### LEFT COLUMN ########## -->
+        <div class="col-md-8" style="height:100%; background-color: red; padding-right: 0px">
+            <webview id="my_webview" style="height:100%; width:100%;"></webview> 
+        </div>
+
+        <!-- ######### RIGHT COLUMN ########## -->
+        <div class="col-md-4 " style="height:100%;" id="elements">
+
+            <!-- PANEL -->
+            <div class="panel panel-default" style="height:100%;">
+                <!-- SELECTED ELEMENT-->
+                <div class="panel-heading">Selected Element</div>
+                <div class="panel-body">
+                    <table class="table">
+                        <tr><th class="col-md-2">Text</th><td class="col-md-10" id="visible_text"></td></tr>
+                        <tr><th class="col-md-2">XPath</th><td class="col-md-10" id="path"></td></tr>
+                    </table> 
+                </div>
+
+                <!-- ELEMENTS -->
+                <div class="panel-heading">Elements</div>
+                <div class="panel-body">
+
+
+                <form id="elements">
+                        <!-- NAME -->
+                        <div id="name_div" class="element" style="padding:5px; background-color: rgba(102, 204, 255,0.15);">
+                            <input type="radio" name="element" value="name" id="radio_name" accesskey="n" checked> <h3 class="type_heading">Name</h3> </input>
+                            <br/><br/>
+                            <table class="table">
+                                <tr><th class="col-md-2">XPaths</th><td class="col-md-10 page_value" id="name_xpath"></td></tr>
+                                <tr><th class="col-md-2">Text</th><td class="col-md-10 page_value" id="name_text"></td></tr>
+                            </table> 
+                        </div>
+
+                        <!-- PRICE -->
+                        <div id="price_div"  class="element" style="padding:5px">
+                            <input type="radio" name="element" value="price" id="radio_price" accesskey="p"> <h3 class="type_heading">Price</h3> </input>
+                            <br/><br/>
+                            <table class="table">
+                                <tr><th class="col-md-2">XPaths</th><td class="col-md-10 page_value" id="price_xpath"></td></tr>
+                                <tr><th class="col-md-2">Text</th><td class="col-md-10 page_value" id="price_text"></td></tr>
+                            </table>
+                        </div>
+
+                        <!-- MAIN_IMAGE -->
+                        <div id="main_image_div" class="element" style="padding:5px">
+                            <input type="radio" name="element" value="main_image" id="radio_main_image" accesskey="n"> <h3 class="type_heading">Main Image</h3> </input>
+                            <br/><br/>
+                            <table class="table">
+                                <tr><th class="col-md-2">XPaths</th><td class="col-md-10 page_value" id="main_image_xpath"></td></tr>
+                                <tr><th class="col-md-2">Text</th><td class="col-md-10 page_value" id="main_image_text"></td></tr>
+                            </table> 
+                            <br/>
+                        </div>
+
+                        <!-- SHORT_TEXT -->
+                        <div id="short_text_div" class="element" style="padding:5px">
+                            <input type="radio" name="element" value="short_text" id="radio_short_text" accesskey="n"> <h3 class="type_heading">Short Text</h3> </input>
+                            <br/><br/>
+                            <table class="table">
+                                <tr><th class="col-md-2">XPaths</th><td class="col-md-10 page_value" id="short_text_xpath"></td></tr>
+                                <tr><th class="col-md-2">Text</th><td class="col-md-10 page_value" id="short_text_text"></td></tr>
+                            </table> 
+                            <br/>
+                        </div>
+
+                    </form> 
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script> 
+    <script src="window_script.js"></script>
+
+
+</body>
+</html>

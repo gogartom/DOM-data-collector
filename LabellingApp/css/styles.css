@@ -1,0 +1,27 @@
+html,body
+{
+  height: 100%; 
+}
+
+#elements{
+    overflow-y: scroll;
+}
+
+.type_heading{
+/*  font-weight: bold;
+  font-size: 16pt;  */
+  display: inline;
+  margin-left: 10px;
+}
+
+.panel-heading{
+    font-weight: bold;
+    font-size: 16pt;  
+}
+
+td {
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
