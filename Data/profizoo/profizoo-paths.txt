@@ -1,0 +1,1 @@
+[{"type":"name","xpath":"id(\"content\")/div[1]/h1[1]","count":1},{"type":"price","xpath":"id(\"image-box\")/div[2]/div[1]/div[1]/div[1]/em[1]","count":1},{"type":"main_image","xpath":"id(\"image-box\")/div[1]/a[1]/img[1]","count":1},{"type":"short_text","xpath":"id(\"content\")/div[1]/div[3]/div[1]","count":0.8}]
