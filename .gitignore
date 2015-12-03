@@ -5,5 +5,5 @@ Crawler/*.out
 # ignore data in Renderer and phantomjs build
 Renderer/data
 Renderer/*_images
+Renderer/*_annotations
 Renderer/phantomjs
-Renderer/bin
