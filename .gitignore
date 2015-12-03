@@ -1,3 +1,8 @@
+
+# ignore crawler outputs
 Crawler/*.out
+
+# ignore data in Renderer and phantomjs build
 Renderer/data
 Renderer/*_images
+Renderer/phantomjs
