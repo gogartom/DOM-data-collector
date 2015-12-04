@@ -135,22 +135,22 @@ RenderUrlsToFile = function(urls, prefix, callbackPerUrl, callbackFinal) {
                         var name = page.evaluate(getElementByXpath,xpaths["name"],MAX_WIDTH);
                         var price = page.evaluate(getElementByXpath,xpaths["price"],MAX_WIDTH);
                         var main_image = page.evaluate(getElementByXpath,xpaths["main_image"],MAX_WIDTH);
-                        var short_text = page.evaluate(getElementByXpath,xpaths["short_text"],MAX_WIDTH);
+                        // var short_text = page.evaluate(getElementByXpath,xpaths["short_text"],MAX_WIDTH);
 
                         //--- if everything was detected properly
-                        if(name && price && main_image && short_text){
+                        if(name && price && main_image){
                             //add url index
                             urlIndex++;
 
                             name["type"] = "name";
                             price["type"] = "price";
                             main_image["type"] = "main_image";
-                            short_text["type"] = "short_text";
+                            // short_text["type"] = "short_text";
 
                             typedObjects.push(name);
                             typedObjects.push(price);
                             typedObjects.push(main_image);
-                            typedObjects.push(short_text);
+                            // typedObjects.push(short_text);
 
                             var visibleBBs = page.evaluate(getVisibleBoundingBoxes,MAX_WIDTH);
                             page.render(image_path,{format: 'jpeg', quality: '100'});
@@ -168,9 +168,9 @@ RenderUrlsToFile = function(urls, prefix, callbackPerUrl, callbackFinal) {
                             if (!main_image){
                                 console.log("Error: "+url+" - missing main_image");
                             }
-                            if (!short_text){
-                                console.log("Error: "+url+" - missing short_text");
-                            }
+                            // if (!short_text){
+                            //     console.log("Error: "+url+" - missing short_text");
+                            // }
                             next("parsing_error", url, file, null, null);
                         }
                     }), 600);

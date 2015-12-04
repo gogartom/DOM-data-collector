@@ -1,0 +1,1 @@
+[{"type":"name","xpath":"id(\"prDetail\")","count":0.9090909090909091},{"type":"price","xpath":"id(\"rightBlDet\")/div[12]/div[2]/p[1]","count":0.45454545454545453},{"type":"main_image","xpath":"id(\"hlavni-obrazek\")","count":0.9090909090909091},{"type":"short_text","xpath":"id(\"rightBlDet\")","count":0.9090909090909091}]
