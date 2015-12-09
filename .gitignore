@@ -7,3 +7,7 @@ Renderer/data
 Renderer/*_images
 Renderer/*_annotations
 Renderer/phantomjs
+
+# ignore large Data files that were generated automatically
+Data/*/*-to-render.txt
+Data/*/*-website.json
