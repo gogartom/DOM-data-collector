@@ -6,11 +6,13 @@ import sys
 urls = []
 added = set()
 
-input_file = sys.argv[1]
+prefix = sys.argv[1]
+input_file = prefix+"/"+prefix+"-website.json"
+output_file = prefix+"/"+prefix+"-to-render.txt"
 threshold = float(sys.argv[2])
 
 ### load urls
-with open(sys.argv[1]) as data_file:    
+with open(input_file) as data_file:    
     for line in data_file:
         try:
             s = line.strip().replace('[','')[:-1]
@@ -26,6 +28,7 @@ with open(sys.argv[1]) as data_file:
 
 
 ### sort
+urls_to_crawl = []
 urls_sorted = sorted(urls,key=lambda x:x[1], reverse=True)
 
 for i in urls_sorted:
@@ -33,4 +36,10 @@ for i in urls_sorted:
     score = i[1]
 
     if(score>=threshold):
-        print url
+        urls_to_crawl.append(url)
+
+### save
+print "writing to file",output_file,"..."
+with open(output_file,'w+') as f:
+    for url in urls_to_crawl:
+        f.write(url+"\n")
