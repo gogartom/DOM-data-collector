@@ -4,9 +4,10 @@
 ## STEP BY STEP CRAWLING
 - add folder with examples to Data
 - get ids by running "cd Scripts; python get_ids_for_examples.py $SHOP_PREFIX"
-- run crawler by "cd Crawler; ./run.sh obchod-boty obchod-boty.cz"
-- get urls to render by "cd Data; python get_product_urls.py snowbitch $THRESHOLD"
+- run crawler by "cd Crawler; ./run.sh $SHOP_PREFIX $SHOP_URL"
+- get urls to render by "cd Data; python get_product_urls.py $SHOP_PREFIX"
 - run render by "cd Renderer; ./run.sh $SHOP_PREFIX"
+
 
 ## EASIER CRAWLING
 - TODO
