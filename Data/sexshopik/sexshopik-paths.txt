@@ -1,0 +1,1 @@
+[{"type":"name","xpath":"id(\"pd-head-title\")","count":0.9090909090909091},{"type":"price","xpath":"id(\"product-basket\")/span[1]","count":0.9090909090909091},{"type":"main_image","xpath":"id(\"gall-master-1\")/a[1]/img[1]","count":0.9090909090909091}]
