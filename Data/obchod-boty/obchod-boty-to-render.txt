@@ -7504,3 +7504,6 @@ http://www.obchod-boty.cz/index.php?kategorie=303-en-%3Edomaci-obuv&strana=2
 http://www.obchod-boty.cz/index.php?hodnota=MUSTANG&sekce=vse_od_znacky&strana=all
 http://www.obchod-boty.cz/index.php?kategorie=303-en-%3Edomaci-obuv&strana=all
 http://www.obchod-boty.cz/index.php?kategorie=335-novinky&strana=all
+http://www.obchod-boty.cz/index.php?hodnota=RIEKER&sekce=vse_od_znacky&strana=all
+http://www.obchod-boty.cz/index.php?kategorie=333-en-%3Esleva&strana=all
+http://www.obchod-boty.cz/index.php?kategorie=333-sleva&strana=all
