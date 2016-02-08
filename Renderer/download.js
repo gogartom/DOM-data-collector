@@ -47,9 +47,9 @@ RenderUrlsToFile = function(urls, prefix, callbackPerUrl, callbackFinal) {
     }
 
     // function - closes page, and gets another one
-    next = function(status, url, image_filename, annotation_path, list_path, typedObjects, visibleBBs) {
+    next = function(status, url, image_filename, annotation_path, list_path, typedObjects, visibleBBs, textBBs) {
         page.close();
-        callbackPerUrl(status, url, image_filename, annotation_path, list_path, typedObjects, visibleBBs);
+        callbackPerUrl(status, url, image_filename, annotation_path, list_path, typedObjects, visibleBBs, textBBs);
         return retrieve();
     };
 
@@ -91,6 +91,50 @@ RenderUrlsToFile = function(urls, prefix, callbackPerUrl, callbackFinal) {
             }
                 
             // }
+        }
+        return listOfObjects
+    }
+
+    getTextBoundingBoxes = function(max_width){
+        var listOfObjects = [];
+        console.log('searching text nodes')
+
+        // -- FIND TEXT NODES JAVASCRIPT
+        var textNodesUnder = function(el){
+          var n, a=[], walk=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,null,false);
+          while(n=walk.nextNode()) a.push(n);
+          return a;
+        }
+
+        text_nodes = textNodesUnder(document.body)
+        
+        //range 
+        var range = document.createRange();
+
+        for (i = 0; i < text_nodes.length; i++) {
+            textNode = text_nodes[i]
+         
+            // range init was here    
+            range.selectNodeContents(textNode);
+            bb = range.getBoundingClientRect()
+            str = textNode.nodeValue
+
+            // save only if
+            // parent is not hidden, it is visible and text is not empty
+            if (textNode.parentNode.offsetParent != null && str &&
+                window.getComputedStyle(textNode.parentNode).visibility == 'visible'){
+                // if it has some size
+                if(bb.width>0 && bb.height>0){ 
+                    // and it is in our bounds
+                    if(bb.left>=0 && bb.top >=0 && bb.right <= max_width){
+                        str = ''+str.replace(/ +(?= )/g,'') //replace multiple spaces
+                        str = str.replace(/(\r\n|\n|\r)/gm,' '); // remove newlines
+                        str = str.trim();    //trim
+                        obj = {text: str, boundingBox: [Math.round(bb.left), Math.round(bb.top), Math.round(bb.right), Math.round(bb.bottom)]};
+                        listOfObjects.push(obj);    
+                    }
+                }
+            }
         }
         return listOfObjects
     }
@@ -153,9 +197,11 @@ RenderUrlsToFile = function(urls, prefix, callbackPerUrl, callbackFinal) {
                             // typedObjects.push(short_text);
 
                             var visibleBBs = page.evaluate(getVisibleBoundingBoxes,MAX_WIDTH);
+                            var textBBs = page.evaluate(getTextBoundingBoxes,MAX_WIDTH);
+
                             page.render(image_path,{format: 'jpeg', quality: '100'});
 
-                            return next(status, url, image_filename, annotation_path, list_path, typedObjects, visibleBBs);
+                            return next(status, url, image_filename, annotation_path, list_path, typedObjects, visibleBBs, textBBs);
 
                         }else{
                             // log what is missing
@@ -171,7 +217,7 @@ RenderUrlsToFile = function(urls, prefix, callbackPerUrl, callbackFinal) {
                             // if (!short_text){
                             //     console.log("Error: "+url+" - missing short_text");
                             // }
-                            next("parsing_error", url, file, null, null);
+                            next("parsing_error", url, file, null, null, null);
                         }
                     }), 600);
                 } 
@@ -200,7 +246,7 @@ cleanText = function(text){
 }
 
 // --- URL PROCESSED - CALLBACK FUNCTION
-callbackPerUrl = function(status, url, imageFilename, annotationPath, listPath, typedObjects, visibleBBs) {
+callbackPerUrl = function(status, url, imageFilename, annotationPath, listPath, typedObjects, visibleBBs, textBBs) {
     // Save only succesful renders
     if (status === "success"){
         console.log(url);
@@ -210,6 +256,7 @@ callbackPerUrl = function(status, url, imageFilename, annotationPath, listPath, 
             image: imageFilename,
             typedObjects: typedObjects,
             visibleBB: visibleBBs
+            textBB: textBBs
         };
 
         // if does not exist, start array
