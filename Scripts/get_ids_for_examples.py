@@ -51,6 +51,7 @@ with open(output,"w") as f:
     for _id in ids:
         f.write(str(_id)+"\n")
 
+'''
 #### TEST 
 print "______ TEST 1 ______"
 for url in urls:
@@ -82,3 +83,4 @@ for url in urls:
     len_union = len(union(ids,ids2))
 
     print "My coef to ", url," : ", (len_intersect/float(len(ids)))
+'''
